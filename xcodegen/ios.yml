@@ -1,0 +1,41 @@
+targets:
+  MoviedbMVVMC:
+    type: application
+    platform: iOS
+
+    sources:
+      - path: Sources/MoviedbMVVMC
+        name: MoviedbMVVMC
+
+    configFiles:
+      debug: [config/xcconfig/develop.xcconfig, $(inherited)]
+      release: [config/xcconfig/release.xcconfig, $(inherited)]
+
+    settings:
+      INFOPLIST_FILE: Sources/MoviedbMVVMC/Supporting Files/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: $(PRODUCT_BUNDLE_IDENTIFIER)
+
+    postCompileScripts:
+      - path: scripts/swiftlint.sh
+        name: SwiftLint
+        outputFiles: ["$(DERIVED_FILE_DIR)/swiftlint_output"]
+        showEnvVars: YES
+        basedOnDependencyAnalysis: NO
+
+  MoviedbMVVMCTests:
+    type: bundle.unit-test
+    platform: iOS
+
+    sources:
+      - path: Sources/Tests
+        name: Tests for MoviedbMVVMC
+
+    dependencies:
+      - target: MoviedbMVVMC
+
+    configFiles:
+      debug: [config/xcconfig/develop.xcconfig, $(inherited)]
+
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+      PRODUCT_BUNDLE_IDENTIFIER: $(PRODUCT_BUNDLE_IDENTIFIER)

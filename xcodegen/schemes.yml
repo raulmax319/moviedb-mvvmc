@@ -1,0 +1,19 @@
+schemes:
+  MoviedbMVVMC:
+    shared: YES
+    buildAction: build
+    runAction: run
+    testAction: test
+    archiveAction: archive
+    profileAction: profile
+    analyzeAction: analyze
+    build:
+      targets:
+        MoviedbMVVMC: all
+        MoviedbMVVMCTests: [run, test]
+    test:
+      gatherCoverageData: YES
+      coverageTargets:
+        - MoviedbMVVMC
+      targets:
+        - MoviedbMVVMCTests

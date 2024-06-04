@@ -1,0 +1,22 @@
+name: MoviedbMVVMC
+
+options:
+  minimumXcodeGenVersion: 2.29
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  deploymentTarget:
+    iOS: 14.0
+  preGenCommand: sh scripts/pre_gen.sh
+  postGenCommand: sh scripts/post_gen.sh
+configFiles:
+  Debug: config/xcconfig/develop.xcconfig
+  Release: config/xcconfig/release.xcconfig
+
+fileGroups:
+  - config
+
+include:
+  - path: xcodegen/ios.yml
+    relativePaths: false
+  - path: xcodegen/schemes.yml
+    relativePaths: false
